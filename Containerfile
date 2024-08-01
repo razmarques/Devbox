@@ -1,7 +1,6 @@
 # Get base image 
 FROM registry.opensuse.org/opensuse/distrobox:latest
 
-
 # Install additional packages
 RUN sudo zypper -n ref && sudo zypper -n dup
 RUN sudo zypper -n in python3 gawk
