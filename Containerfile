@@ -14,3 +14,4 @@ RUN sudo zypper -n in code
 RUN PYTHON_VERSION=$(python3 --version | awk '{print $2}' | awk -F. '{print $1 $2}') \
     && sudo zypper install -y python$PYTHON_VERSION-pipx
 RUN pipx install poetry
+RUN pipx ensurepath
