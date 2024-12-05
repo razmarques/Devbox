@@ -3,7 +3,7 @@ FROM registry.opensuse.org/opensuse/distrobox:latest
 
 # Install additional packages
 RUN sudo zypper -n ref && sudo zypper -n dup
-RUN sudo zypper -n in python3 gawk
+RUN sudo zypper -n in python3 gawk rstudio-desktop
 
 # Install poetry
 RUN PYTHON_VERSION=$(python3 --version | awk '{print $2}' | awk -F. '{print $1 $2}') \
