@@ -34,10 +34,15 @@ RUN sudo zypper --gpg-auto-import-keys ref
 RUN sudo zypper -n in code
 
 # Download and install PyCharm Community Edition
-RUN wget -O /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.tar.gz && \
-    mkdir -p ${INSTALL_DIR} && \
-    tar -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR} && \
-    rm /tmp/pycharm.tar.gz
+#RUN wget -O /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.tar.gz && \
+#    mkdir -p ${INSTALL_DIR} && \
+#    tar -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR} && \
+#    rm /tmp/pycharm.tar.gz
+
+RUN wget -O /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.tar.gz
+RUN mkdir -p ${INSTALL_DIR}
+RUN tar -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR}
+RUN rm /tmp/pycharm.tar.gz
 
 # Set the working directory
 WORKDIR ${INSTALL_DIR}
