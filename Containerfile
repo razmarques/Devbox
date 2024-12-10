@@ -36,7 +36,7 @@ RUN sudo zypper -n in code
 # Download and install PyCharm Community Edition
 RUN mkdir -p ${INSTALL_DIR} && chmod 777 ${INSTALL_DIR} && \
     wget -O /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.tar.gz && \
-    tar --no-same-owner --no-same-permissions --overwrite-dir -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR} && \
+    tar --no-same-owner --no-same-permissions --transform 's|^|pycharm-|g' -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR} && \
     rm /tmp/pycharm.tar.gz
 
 # Set the working directory
