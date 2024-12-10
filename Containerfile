@@ -36,11 +36,11 @@ RUN sudo zypper -n in code
 # Download and install PyCharm Community Edition
 #RUN wget -O /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.tar.gz && \
 #    mkdir -p ${INSTALL_DIR} && \
-#    tar -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR} && \
+#    tar --no-same-owner -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR} && \
 #    rm /tmp/pycharm.tar.gz
 
+RUN mkdir -p ${INSTALL_DIR} && chmod 777 ${INSTALL_DIR}
 RUN wget -O /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.tar.gz
-RUN mkdir -p ${INSTALL_DIR}
 RUN tar -xzf /tmp/pycharm.tar.gz --strip-components=1 -C ${INSTALL_DIR}
 RUN rm /tmp/pycharm.tar.gz
 
