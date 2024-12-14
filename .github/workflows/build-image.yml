@@ -30,10 +30,6 @@ jobs:
     - name: Log in to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | podman login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    # Step to check the current user running the build process
-    - name: Check current user
-      run: whoami
-
     - name: Build Podman image
       run: podman build -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile .
 
