@@ -31,7 +31,7 @@ jobs:
       run: echo "${{ secrets.GITHUB_TOKEN }}" | podman login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Build Podman image
-      run: podman build -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile .
+      run: sudo podman build -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile .
 
     - name: Push Podman image
       run: podman push ghcr.io/${{ github.repository_owner }}/devbox:latest
