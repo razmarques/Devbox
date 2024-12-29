@@ -34,7 +34,7 @@ jobs:
       run: sudo podman build --no-cache -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile . --log-level=debug
 
     - name: List Podman images
-      run: podman images
+      run: podman images --log-level=debug
 
     - name: Push Podman image
       run: podman push ghcr.io/${{ github.repository_owner }}/devbox:latest
