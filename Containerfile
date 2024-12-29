@@ -1,8 +1,8 @@
 # Set environment variables
-ENV FEDORA_VERSION=41
+ARG FEDORA_VERSION=41
 
 # Get base image
-FROM registry.fedoraproject.org/fedora:${FEDORA_VERSION}
+FROM fedora:${FEDORA_VERSION}
 
 # Update the system and install required packages
 RUN dnf update -y && \
