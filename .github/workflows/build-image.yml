@@ -33,5 +33,8 @@ jobs:
     - name: Build Podman image
       run: sudo podman build -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile .
 
+    - name: List Podman images
+      run: podman images
+
     - name: Push Podman image
       run: podman push ghcr.io/${{ github.repository_owner }}/devbox:latest
