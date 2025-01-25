@@ -21,20 +21,17 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y podman
 
-    - name: Set up Podman
-      run: |
-        sudo mkdir -p /etc/containers
-        echo '[registries.search]' | sudo tee /etc/containers/registries.conf
-        echo 'registries = ["ghcr.io"]' | sudo tee -a /etc/containers/registries.conf
+    # - name: Set up Podman
+    #   run: |
+    #     sudo mkdir -p /etc/containers
+    #     echo '[registries.search]' | sudo tee /etc/containers/registries.conf
+    #     echo 'registries = ["ghcr.io"]' | sudo tee -a /etc/containers/registries.conf
 
     - name: Log in to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | podman login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Build Podman image
-      run: sudo podman build --no-cache -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile . --log-level=debug
-
-    - name: List Podman images
-      run: podman images --log-level=debug
+      run: podman build --no-cache -t ghcr.io/${{ github.repository_owner }}/devbox:latest -f ./Containerfile .
 
     - name: Push Podman image
       run: podman push ghcr.io/${{ github.repository_owner }}/devbox:latest
