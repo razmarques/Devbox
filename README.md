@@ -1,4 +1,4 @@
-# Devbox: a distrobox development container
+# Devbox: a distrobox image with development tools
 Container image that bundling software development utilities and IDEs, built upon the latest Fedora distribution. Intended to be used with `distrobox`. This is a great solution to set up a software development environment on an immutable distribution such as Aeon or Silverblue.
 
 ## The image includes the following:
