@@ -1,5 +1,5 @@
 # Set environment variables
-ARG FEDORA_VERSION=41
+ARG FEDORA_VERSION=42
 
 # Get base image
 FROM fedora:${FEDORA_VERSION}
